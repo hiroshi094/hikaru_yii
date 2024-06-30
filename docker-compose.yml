@@ -1,21 +1,16 @@
-version: '3.7'
 services:
     web:
-        build: ./
+        build: .
         container_name: "php74-1"
         volumes:
-            - "./src:/var/www/html"
+            - "./html/:/var/www/html"
         privileged: true
         ports:
             - "80:80"
         depends_on:
             - mysql
-        # platform: linux/x86_64
     mysql:
-        image: mysql:8
-        volumes:
-            - ./mysql:/var/lib/mysql
-            - ./config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        build: ./mysql
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=test_db
