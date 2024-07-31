@@ -3,7 +3,7 @@ services:
         build: .
         container_name: "php74-1"
         volumes:
-            - "./html/:/var/www/html"
+            - "./src/:/var/www/html"
         privileged: true
         ports:
             - "80:80"
